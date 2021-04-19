@@ -1,0 +1,73 @@
+#include <iostream>
+#include<time.h>
+#include <stdlib.h>
+#include <string>
+using namespace std;
+
+int main()
+{
+	bool igual = false;
+    int cart[4][26];
+	int n[4] = {26, 26, 26, 26};
+	int b,c;
+
+	for(int i = 0; i < 4; i++){
+		for(int d = 0; d < 26; d++){
+			cart[i][d] = 0;
+		}
+	}
+
+	for(int i = 0; i < 4; i++){
+		for(int d = 0; d < 11; d++){
+
+			do{
+				igual = false;
+				b = rand() % (4 + 1 - 1) + 1;
+
+				if(n[b - 1] == 0){
+					igual = true;
+				}
+				else{
+
+					c = rand() % (26 + 1 - 1) + 1;
+
+					if(cart[b - 1][c - 1] != 0){
+						igual = true;}
+					else{
+						cart[b - 1][c - 1] = i + 1;
+						n[b - 1]--;
+					}}}
+			while(igual);}}
+	for(int i = 0; i < 4; i++){
+		cout << "Jogador " << i + 1 << endl;
+		cout << "suas cartas"<<endl; 
+		cout << endl;
+		
+		for(int a = 0; a < 4; a++){
+			for(int d = 0; d < 26; d++){
+				if(cart[a][d] == i + 1){
+
+					if(d > 13){
+						if(d - 12 >= 10){
+							cout << a + 1 << "--" << a - 12 << "--2 | ";
+						}
+						else{
+							cout << a + 1 << "--" << "0" << d - 12 << "--2 | ";
+						}
+					}
+					else{
+						if(d + 1 >= 10)	{
+							cout << a + 1 << "--" << d + 1 << "--1 | ";
+						}
+						else{
+							cout << a + 1 << "--" << "0" << d + 1 << "--1 | ";
+						}
+					}
+				}
+			}
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
